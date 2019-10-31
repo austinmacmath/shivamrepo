@@ -1,0 +1,267 @@
+/* git clone [url]
+
+git status 
+// checks status
+
+// 1
+git add filename
+// includes changes, add files that have been modified
+
+// 2
+git commit -m "message to include"
+// -m means message
+// will say you're ahead by one commit
+
+// 3
+git push origin master
+// push changes to remote repository
+
+
+
+
+git pull
+// updates local files from remote files
+
+// C++ Variables and Types
+Variables are used to store data
+to declare a variable: 
+    int x = 0;
+should initialize variable when you declare int
+- variable names must start with an alpha character or underscore
+- other characters can be alpha numeric and underscore characters, but no spaces or other special characters
+- common types of Variables 
+    - int: integers
+    - double: floating point (decimal)
+    - char: characters
+    - string: sequence (array of characters) (needs to be included)
+- remember to initialize Variables
+    - uninitialized variables may have strange side effects
+
+// two ways to readd into C++ programs
+int x;
+cin>>x;
+
+// using command line arguments:
+$./myprog argument
+ */
+// in the main function, have the main function take parameters
+
+#include <iostream>
+using namespace std;
+
+// $.myprog 1
+// argc 2. 1st argument is "./myprog"
+// 2nd argument is "1"
+// $./myprog 1 banana orange
+int main(int argc, char* argv[]){
+    // argc is the number of arguments passed to main
+    // argv is a list of arguments
+    cout << argv[0] << endl;
+
+    return 0;
+}
+
+// if you try to access an unequal amount of arrays, returns segmentation fault 11
+// while loop is used to repeat code while some condition is true
+// 
+int i = 0;
+while(boolean expression) {
+    // check if the boolean expression is true
+    // if true, statement will execute
+    // if false, statement
+    i = i+1;
+}
+
+// be careful of integer division, need at least one double in integer division to get a double answer
+
+int i = 10;
+double j = 1/static_cast<double>(i);
+cout.setf(ios::fixed); // using a fixed point
+cout.setf(ios::showpoint);
+cout.precision(3); // sets precision after decimal point
+cout << j;
+// prints out 0.100
+
+// for loop
+// to print out an error message, use 
+
+cerr << "Usage: " << argv[0] << " an integer" <<endl;
+
+// the function
+atoi() // converts alphabet to integer
+// must use 
+#include <clibstd>
+
+// can use this to edit s
+string s = "";
+for(int i = 0; i < 10; i++) {
+    s = s + "*";
+}
+s = s + "\n"
+
+// when you declare a function without implementing it and then try to call it
+// you will get a link time error
+// happens before runtime
+// happens after compile time
+
+// general model of memory
+    // sequence of adjacent cells
+    // each cell has 1 byte stored in it
+    // each cell has an address
+
+// for example
+int x = 10
+// uses 4 bytes of storage bc type int
+
+char y = 10
+// can store any number less than 255;he
+//or
+char y = 'a'
+// will use 1 byte 
+
+//C++ memory model
+    // stack: region in program memory to manage local variables. Every time a function is called, its local variables are created on the stack
+    // when the function returns, local variables are remoed from the stack
+    // a function's stack frame stores a function's local variable when its called 
+    // global variables are deeclared out side of any function
+
+
+
+
+
+
+// October 15, 2019
+// testing code
+
+// test code drive your implementation (test driven development)
+
+/*
+precondition: width should be positive odd number
+postcondition: returns a triangle with the given width
+*/
+
+// see testshapes.cpp and shapes.cpp
+// g++ -c shapes.cpp compiles the file without creating an executable
+// converts shapes.cpp to machine code, but doesn't care if you have a main function
+// just checks for syntax errors
+// produces shapes.o
+// shapes.o just contains machine code version of shapes.cpp
+// doens't contain code for any other files
+// the command g++ -S file.name gets you assembly language file ending in .s
+// the command g++ -c file.name gets you machine code file ending in .o
+// .o is the object file and it is hello.cpp translated to machine code
+// the program ld squishes all programs together to produce executable
+// if only part of the program exists, then ld throws you a linker error 
+
+
+
+
+
+// october 17, 2019
+// data representation
+// external vs internal representation
+// external representation
+    // decimal (base 10)
+// internal representation
+    // binary (1 and 0)
+    // each position is called a bit
+    // bits take up space
+    // 8 bits in a byte
+    // how to decide how many bits to represent a decimal number 5
+    // use positional encoding to convert from decimal 5 to binary 5
+    // starting from the right side
+    // _ _ _(2^2) _(2^1) _(2^0)
+    // to represent decimal 5 in binary, 0000...00101
+    // read from right to left
+    // to represent decimal 15 in binary, 1111
+
+// positional encoding for non negatie numbers
+    // hex (base 16) digits: (0-9, A-F)
+    // 0 -0
+    // ...
+    // 15 -F
+    // to represent 5 in hex 000..5
+    // to represent 32 in hex 000...020
+    // _(16^3) _(16^2) _(16^1) _(16^0)
+
+// when declaring a binary value for a variable
+// preface the value with 0b
+int x = 22;
+int x = 0b10110;
+// the two above are equivalent
+
+// to convert from binary to hex
+// starting from the right, group by fours
+// then convert each 4 bit value to hex
+// binary: [0001][0110]
+// hex: 16
+
+// to initialize variable with hex value, preface with 0x
+int x = 0x16;
+
+// to convert from hex to binary
+// expand each digit to four and represent that digit in binary, must use all 4 spaces
+// typically takes 32 bits to store an integer on a computer
+// bits can represent anything
+// if you wanted you could use an entirely different encoding scheme
+
+// October 22, 2019
+// read from file and writing to file
+
+#include <string>
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main() {
+    ofstream out;
+    out.open("animals.txt"); // this is a new file
+    // creates connection to this new file animals.txt
+    out << "tiger \n " << "parrot \n" << "whale \n"; // writes these to the new file
+    out.close(); // closes the file
+
+
+
+    return 0;
+}
+
+
+
+#include <string>
+#include <iostream>
+#include <fstream>
+
+using namespace std;
+
+int main() {
+    ifstream in;
+    string str;
+    in.open("animals.txt"); // this is an existing file to read an existing file
+    if(!in) { // if 
+        cerr << "Error opening the file" << endl;
+        return 0;
+    }
+    getline(in, str); // reads everything up to a new line
+    cout << str << endl;
+    getline(in, str); // reads the next line, stores in memory where it is in the text, the cursor
+    // if you getlines more times than you have lines inyour file, then you'll just get a blank line
+    // 1do not read past the end of the file
+    if(!in) {
+        cerr << "Read past the end of the file" << endl;
+    }
+    cout << str << endl;
+    in.close(); // closes the file
+
+
+
+    return 0;
+}
+
+while(in) {
+    getline(in, str);
+    if(!in) {
+        break;
+    }
+    cout << str << endl;
+}
